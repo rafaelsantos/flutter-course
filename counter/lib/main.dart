@@ -3,36 +3,51 @@ import 'package:flutter/material.dart';
 void main() {
   runApp(MaterialApp(
       title: "People Counter",
-      home: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
+      home: Stack(
         children: <Widget>[
-          Text(
-            "People: 0",
-            style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+          Image.asset(
+            "images/restaurant.jpg",
+            fit: BoxFit.cover,
+            height: 1000.0,
           ),
-          Row(
+          Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              FlatButton(
-                child: Text("+1",
-                  style: TextStyle(fontSize: 40.0, color: Colors.white),
-                ),
-                onPressed: () {},
+              Text(
+                "People: 0",
+                style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
               ),
-              FlatButton(
-                child: Text("-1",
-                  style: TextStyle(fontSize: 40.0, color: Colors.white),
-                ),
-                onPressed: () {},
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  Padding(
+                    padding: EdgeInsets.all(10.0),
+                    child: FlatButton(
+                      child: Text("+1",
+                        style: TextStyle(fontSize: 40.0, color: Colors.white),
+                      ),
+                      onPressed: () {},
+                    ),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.all(10.0),
+                    child: FlatButton(
+                      child: Text("-1",
+                        style: TextStyle(fontSize: 40.0, color: Colors.white),
+                      ),
+                      onPressed: () {},
+                    ),
+                  ),
+                ],
               ),
+              Text(
+                "Available",
+                style: TextStyle(
+                    color: Colors.white,
+                    fontStyle: FontStyle.italic,
+                    fontSize: 30.0),
+              )
             ],
-          ),
-          Text(
-            "Available",
-            style: TextStyle(
-                color: Colors.white,
-                fontStyle: FontStyle.italic,
-                fontSize: 30.0),
           )
         ],
       )));
