@@ -1,0 +1,4 @@
+#Wed Jan 22 13:05:09 BRST 2020
+base.0=/home/rafaelsantos/Workspace/flutter/com.github.rafaelsantos/flutter-course/helloworld/build/app/intermediates/dex/debug/mergeDexDebug/out/classes.dex
+path.0=classes.dex
+renamed.0=classes.dex
