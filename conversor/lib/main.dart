@@ -34,8 +34,34 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  double dolar;
+
+  final realController = TextEditingController();
+  final dollarController = TextEditingController();
+  final euroController = TextEditingController();
+
+  double dollar;
   double euro;
+
+  void _realChanged(String text) {
+    double real = double.parse(text);
+
+    dollarController.text = (real/dollar).toStringAsFixed(2);
+    euroController.text = (real/euro).toStringAsFixed(2);
+  }
+
+  void _dollarChanged(String text) {
+    double dollar = double.parse(text);
+
+    realController.text = (dollar * this.dollar).toStringAsFixed(2);
+    euroController.text = (dollar * this.dollar/ euro).toStringAsFixed(2);
+  }
+
+  void _euroChanged(String text) {
+    double euro = double.parse(text);
+
+    realController.text = (euro * this.euro).toStringAsFixed(2);
+    dollarController.text = (euro * this.euro / dollar).toStringAsFixed(2);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -67,7 +93,7 @@ class _HomeState extends State<Home> {
                       textAlign: TextAlign.center,
                     ));
                   } else {
-                    dolar = snapshot.data["results"]["currencies"]["USD"]["buy"];
+                    dollar = snapshot.data["results"]["currencies"]["USD"]["buy"];
                     euro = snapshot.data["results"]["currencies"]["EUR"]["buy"];
 
                     return SingleChildScrollView(
@@ -77,37 +103,32 @@ class _HomeState extends State<Home> {
                         children: <Widget>[
                           Icon(Icons.monetization_on,
                               size: 150.0, color: Colors.amber),
-                          TextField(
-                              decoration: InputDecoration(
-                                  labelText: "Real",
-                                  labelStyle: TextStyle(color: Colors.amber),
-                                  border: OutlineInputBorder(),
-                                  prefixText: "R\$ "),
-                              style: TextStyle(
-                                  color: Colors.amber, fontSize: 25.0)),
+                          buildTextField("Real", "R\$", realController, _realChanged),
                           Divider(),
-                          TextField(
-                              decoration: InputDecoration(
-                                  labelText: "Dollar",
-                                  labelStyle: TextStyle(color: Colors.amber),
-                                  border: OutlineInputBorder(),
-                                  prefixText: "U\$ "),
-                              style: TextStyle(
-                                  color: Colors.amber, fontSize: 25.0)),
+                          buildTextField("Dollar", "U\$ ", dollarController, _dollarChanged),
                           Divider(),
-                          TextField(
-                              decoration: InputDecoration(
-                                  labelText: "Euro",
-                                  labelStyle: TextStyle(color: Colors.amber),
-                                  border: OutlineInputBorder(),
-                                  prefixText: "€ "),
-                              style: TextStyle(
-                                  color: Colors.amber, fontSize: 25.0))
+                          buildTextField("Euros", "€ ", euroController, _euroChanged)
                         ],
                       ),
                     );
                   }
               }
             }));
+  }
+
+  Widget buildTextField(String label, String prefix, TextEditingController controller, Function function) {
+    return TextField(
+        controller: controller,
+        decoration: InputDecoration(
+            labelText: label,
+            labelStyle: TextStyle(color: Colors.amber),
+            border: OutlineInputBorder(),
+            prefixText: prefix),
+        style: TextStyle(
+            color: Colors.amber, fontSize: 25.0
+        ),
+        onChanged: function,
+        keyboardType: TextInputType.numberWithOptions(decimal: true),
+    );
   }
 }
