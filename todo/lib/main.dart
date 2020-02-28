@@ -114,6 +114,21 @@ class _HomeState extends State<Home> {
           _todo.removeAt(index);
 
           _saveData();
+
+          final snack = SnackBar(
+            content: Text("Task ${_last["title"]} removed!"),
+            action: SnackBarAction(label: "Undo",
+              onPressed: () {
+                setState(() {
+                  _todo.insert(_lastRemoved, _last);
+                  _saveData();
+                });
+              },
+            ),
+            duration: Duration(seconds: 5),
+          );
+          
+          Scaffold.of(context).showSnackBar(snack);
         });
       },
     );
