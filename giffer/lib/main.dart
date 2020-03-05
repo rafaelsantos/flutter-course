@@ -7,6 +7,11 @@ void main() {
     theme: ThemeData(
         hintColor: Colors.white,
         primaryColor: Colors.white,
+        primaryTextTheme: TextTheme(
+          title: TextStyle(
+            color: Colors.white
+          )
+        ),
         inputDecorationTheme: InputDecorationTheme(
           enabledBorder:
           OutlineInputBorder(borderSide: BorderSide(color: Colors.white)),
