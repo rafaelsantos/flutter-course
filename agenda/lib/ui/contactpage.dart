@@ -18,7 +18,7 @@ class _ContactPageState extends State<ContactPage> {
   final _mailController = TextEditingController();
   final _phoneController = TextEditingController();
 
-  final _nameFocus = FocusMode();
+  final _nameFocus = FocusNode();
 
   bool _userEdited = false;
 
