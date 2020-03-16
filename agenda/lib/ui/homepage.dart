@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:agenda/helpers/contactHelper.dart';
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import 'contactpage.dart';
 
@@ -91,7 +92,7 @@ class _HomePageState extends State<HomePage> {
         )
       ),
       onTap: () {
-        _showContactPage(contact: contacts[index]);
+        _showOptions(context, index);
       },
     );
   }
@@ -113,7 +114,8 @@ class _HomePageState extends State<HomePage> {
                     child: FlatButton(
                       child: Text("Call", style: TextStyle(color: Colors.red, fontSize: 20.0)),
                       onPressed: () {
-
+                        launch("tel:${contacts[index].phone}");
+                        Navigator.pop(context);
                       },
                     )
                   ),
