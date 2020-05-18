@@ -1,9 +1,16 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 
 class TextComposer extends StatefulWidget {
 
+  //Passing a function to TextComposer constructor
   TextComposer(this.sendMessage);
-  Function(String) sendMessage;
+
+  //This function is implemented in ChatScreen
+  // and is passed by parameter in constructor to send message to firebase
+  final Function(String) sendMessage;
 
   @override
   _TextComposerState createState() => _TextComposerState();
