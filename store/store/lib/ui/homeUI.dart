@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:store/tab/homeTab.dart';
 
 class HomeUI extends StatelessWidget {
 
@@ -10,7 +11,7 @@ class HomeUI extends StatelessWidget {
       controller: _pageController,
       physics: NeverScrollableScrollPhysics(),
       children: <Widget>[
-
+        HomeTab()
       ],
     );
   }
