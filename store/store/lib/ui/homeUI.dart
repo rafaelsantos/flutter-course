@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:store/tab/homeTab.dart';
+import 'package:store/widget/customDrawerWidget.dart';
 
 class HomeUI extends StatelessWidget {
 
@@ -11,7 +12,10 @@ class HomeUI extends StatelessWidget {
       controller: _pageController,
       physics: NeverScrollableScrollPhysics(),
       children: <Widget>[
-        HomeTab()
+        Scaffold(
+          body: HomeTab(),
+          drawer: CustomDrawer(),
+        )
       ],
     );
   }
