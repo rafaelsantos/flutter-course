@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:store/tab/categoryTab.dart';
 import 'package:store/tab/homeTab.dart';
 import 'package:store/widget/customDrawerWidget.dart';
 
@@ -15,6 +16,14 @@ class HomeUI extends StatelessWidget {
         Scaffold(
           body: HomeTab(),
           drawer: CustomDrawer(_pageController),
+        ),
+        Scaffold(
+          appBar: AppBar(
+            title: Text("Categories"),
+            centerTitle: true,
+          ),
+          drawer: CustomDrawer(_pageController),
+          body: CategoryTab(),
         )
       ],
     );
