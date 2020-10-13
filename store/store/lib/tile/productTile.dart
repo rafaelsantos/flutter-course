@@ -19,9 +19,10 @@ class ProductTile extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.start,
             children: <Widget>[
               AspectRatio(
-                aspectRatio: 0.8,
+                aspectRatio: 0.8,  mAjava2j
+            
                 child: Image.network(
-                  data.images[0],
+                  data.images[1],
                   fit: BoxFit.cover,
                 ),
               ),
@@ -49,7 +50,42 @@ class ProductTile extends StatelessWidget {
               )
             ],
           )
-        : Row(),
+        : Row(
+          children: <Widget>[
+            Flexible(
+              flex: 1,
+              child: Image.network(
+                data.images[1],
+                fit: BoxFit.cover,
+                height: 250.0,
+              ),
+            ),
+            Flexible(
+              flex: 1,
+              child: Container(
+                padding: EdgeInsets.all(8.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    Text(data.title,
+                      style: TextStyle(
+                          fontWeight: FontWeight.w500
+                      ),
+                    ),
+                    Text(
+                      "R\$ ${data.price.toStringAsFixed(2)}",
+                      style: TextStyle(
+                          color: Theme.of(context).primaryColor,
+                          fontSize: 17.0,
+                          fontWeight: FontWeight.bold
+                      ),
+                    )
+                  ],
+                ),
+              ),
+            )
+          ],
+        ),
       ),
     );
   }
